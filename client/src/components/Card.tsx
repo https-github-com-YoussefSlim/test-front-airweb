@@ -1,9 +1,15 @@
+import { useContext } from 'react';
+
 import { CartAdd } from '@/assets/icons';
+import { CartContext } from '@/contexts';
 import { Product } from '@/types';
 import { convertPrice } from '@/utils';
 
-// eslint-disable-next-line camelcase
-export function Card({ description, label, price, thumbnail_url }: Product) {
+export function Card(props: Product) {
+  // eslint-disable-next-line camelcase
+  const { description, label, price, thumbnail_url } = props;
+  const { toggleAddProductToCart } = useContext(CartContext);
+
   return (
     <article className=" relative flex justify-between w-[386px] gap-3 items-center bg-white rounded-xl shadow-lg p-[10px] md:flex-col md:w-[403px] md:items-start">
       <div className="flex">
@@ -53,6 +59,7 @@ export function Card({ description, label, price, thumbnail_url }: Product) {
           duration-500
         "
           type="button"
+          onClick={toggleAddProductToCart(props)}
         >
           <div className="row items-center justify-center uppercase font-bold col w-[36px] h-[29px] rounded-[4px] md:w-[193px] md:h-[38px] md:row md:justify-around ">
             <CartAdd />
