@@ -25,7 +25,7 @@ function App(props: AppProps) {
         )}
       >
         <Header />
-        <main className=" min-h-[calc(100vh-313px)] max-w-4xl xl:mx-auto">
+        <main className=" min-h-[calc(100vh-594px)] md:min-h-[calc(100vh-266px)] md:w-3/5 md:mx-auto">
           <div className={classNames(' overflow-y-auto')}>
             <props.Component {...props.pageProps} />
           </div>

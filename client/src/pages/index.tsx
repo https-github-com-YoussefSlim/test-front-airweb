@@ -17,7 +17,7 @@ export default function Index({
   ssrProducts: Product[];
   ssrCategories: Category[];
 }) {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation('common');
   const { data: products, isValidating } = useSWR<Product[]>(endPoints.products, {
     fallbackData: ssrProducts,
   });

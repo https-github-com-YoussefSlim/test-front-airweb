@@ -8,7 +8,7 @@ import { year } from '@/utils';
 import { IconFaceBook, IconInstagram, IconTwitter, IconYouTube } from '../assets/icons';
 
 export function Footer() {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation('common');
 
   return (
     <footer className="primary-bg-color space-y-6">
