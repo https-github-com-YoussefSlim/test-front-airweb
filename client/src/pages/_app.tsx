@@ -13,8 +13,8 @@ function App(props: AppProps) {
   return (
     <SWRConfig value={{ fetcher: httpClient.get, errorRetryCount: 0 }}>
       <Header />
-      <main className=" min-h-[calc(100vh-313px)]">
-        <div className={classNames(' overflow-y-auto mb-6')}>
+      <main className=" min-h-[calc(100vh-313px)] max-w-4xl xl:mx-auto">
+        <div className={classNames(' overflow-y-auto')}>
           <props.Component {...props.pageProps} />
         </div>
       </main>

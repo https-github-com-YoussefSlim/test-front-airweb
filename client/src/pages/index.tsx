@@ -3,9 +3,11 @@ import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import useSWR from 'swr';
 
+import { Card } from '@/components';
 import { StaleIndicator } from '@/components/loading';
 import { ssrRedirect, routeNames, createSSRHttpClient, endPoints } from '@/support';
 import { Category, Product } from '@/types';
+import { sortLabel } from '@/utils';
 
 // eslint-disable-next-line react/function-component-definition
 export default function Index({
@@ -37,12 +39,14 @@ export default function Index({
         <link href="/favicon.png" rel="icon" />
       </Head>
       <StaleIndicator isValidating={isValidating}>
-        {productsByCategory?.map((c) => (
-          <section key={c.id} className="col">
+        {productsByCategory?.sort(sortLabel).map((c) => (
+          <section key={c.id} className="col justify-center mb-6 space-y-5 gap-2">
             <h2 className="font-bold">{c.label}</h2>
-            {c.productfiltred?.map((p) => (
-              <h2 key={p.id}> {p.label} </h2>
-            ))}
+            <div className="row justify-center flex-wrap space-y-5 xl:space-x-5 xl:space-y-0">
+              {c.productfiltred?.sort(sortLabel).map((p) => (
+                <Card key={p.id} {...p} />
+              ))}
+            </div>
           </section>
         ))}
       </StaleIndicator>
